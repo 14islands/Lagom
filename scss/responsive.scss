@@ -1,0 +1,39 @@
+
+// BREAKPOINT DEFINITIONS	
+
+/* Breakpoint mixin - wider than most mobiles*/
+@mixin if-wider-than-mobile {
+	@media (min-width: pxToEm(568 + 1)) {
+		@content;
+	}
+}
+/* Breakpoint mixin - wide enough for skeleton grid layout to be active */
+@mixin if-grid-layout {
+	@media (min-width: pxToEm(768)) {
+		@content;
+	}
+}
+@mixin if-maximized-grid {
+	@media (min-width: pxToEm(960)) {
+		@content;
+	}
+}
+@mixin if-wider-than($px) {
+	@media (min-width: pxToEm($px)) {
+		@content;
+	}
+}
+
+
+// RESOLUTION RETINA WRAPPERS
+@mixin unless-retina {
+	@include if-max-resolution(1.49) {
+		@content;
+	}
+}
+@mixin if-retina {
+	@include if-min-resolution(1.5) {
+		@content;
+	}	
+}
+
