@@ -1,0 +1,101 @@
+
+
+// BASE PIXEL SIZE FOR ALL REM/EM calcs
+$base_px: 16 !default; // body font-size: 100%
+
+/* 	@author 14islands.com
+ *	SASS Function for return value with a new unit (or null if no value)
+ */
+@function setUnit($value, $unit) {
+	@if $value {
+		@return #{$value}$unit;
+	}
+	@return null;
+}
+
+/* 	@author 14islands.com
+ *	SASS Function for converting pixel values to relative rem value
+ */
+@function pxToRem($target_px: null) {
+	@if $target_px {
+ 	  @return setUnit( ($target_px / $base_px),  rem);
+ 	}
+ 	@return null;
+}
+
+/* 	@author 14islands.com
+ *	SASS Mixin for writing out a property with a rem value and a px fallback
+ */
+@mixin pxToRem($prop, $first, $second: null, $third: null, $fourth: null) {
+	#{$prop}: setUnit($first, px) setUnit($second, px) setUnit($third, px) setUnit($fourth, px);
+	//#{$prop}: pxToRem($first) pxToRem($second) pxToRem($third) pxToRem($fourth);
+}
+
+/* 	@author 14islands.com
+ *	SASS Function for ceonverting pixel values to relative rem value
+ * 	@param $context_px optional parameter for context font-size - uses $base_px size as default 
+ */
+@function pxToEm($target_px, $context_px: $base_px) {
+  @return $target_px / $context_px * 1em;
+}
+
+/* 	@author 14islands.com
+ *	SASS Mixin for writing out a property with an em value and a px fallback
+ */
+@mixin pxToEm($prop, $first, $second: null, $third: null, $fourth: null, $context_px: null) {
+	#{$prop}: setUnit($first, px) setUnit($second, px) setUnit($third, px) setUnit($fourth, px);
+	#{$prop}: pxToEm($first, $context_px) pxToEm($second, $context_px) pxToEm($third, $context_px) pxToEm($fourth, $context_px);
+}
+
+
+
+/*	@author 14islands.com
+ *	SASS Function to output a future proof min-resolution media query
+ *
+ *	Inspired by:
+ *		- http://alwaystwisted.com/post.php?s=2012-08-06-a-sass-mixin-for-media-queries-and-ie
+ *		- http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio/
+ *		- http://css-tricks.com/snippets/css/retina-display-media-query/
+ */
+@mixin if-resolution($prefix, $dppx) {
+	// 1px = 96dpi
+	$dpi: $dppx * 96;
+	@media
+		(-webkit-#{$prefix}-device-pixel-ratio: #{$dppx}),
+		(   #{$prefix}--moz-device-pixel-ratio: #{$dppx}),
+		(     -o-#{$prefix}-device-pixel-ratio: #{$dppx*2}/2),
+		(        #{$prefix}-device-pixel-ratio: #{$dppx}),
+		(                #{$prefix}-resolution: #{$dpi}dpi),
+		(                #{$prefix}-resolution: #{$dppx}dppx) { 
+	  	@content;
+  }
+}
+@mixin if-min-resolution($dppx) {
+	@include if-resolution(min, $dppx) {
+		@content;
+	}
+}
+@mixin if-max-resolution($dppx) {
+	@include if-resolution(max, $dppx) {
+		@content;
+	}
+}
+
+
+
+/*	@author 14islands.com
+ *	SASS clearfix mixin
+ *
+ *	credit: H5BP Clearfix
+ */
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content:"";
+		display:table;
+	}
+	&:after {
+		clear:both;
+	}
+	*zoom: 1;
+}

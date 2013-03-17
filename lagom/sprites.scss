@@ -1,0 +1,19 @@
+
+/*
+* Mixin to use double size sprites for retina displays
+*
+* Example:
+* Usage: @include sprite(top left, "img/sprite");
+* In that file names should be img/sprite@1x.png & img/sprite@2x.png
+*
+*
+*/
+@mixin retina-sprite($position, $url, $spriteWidth:400, $spriteHeight:500) {
+	display: block;
+	background-position: $position;
+	background-repeat: no-repeat;
+	@include pxToRem(background-size, $spriteWidth, $spriteHeight);
+
+	@include unless-retina { background-image: url($url + '@1x.png'); }
+	@include     if-retina { background-image: url($url + '@2x.png'); }
+}
