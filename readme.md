@@ -10,7 +10,7 @@ Features
 - Mixin for retina **sprites**
 - Mixin to **trigger breakpoints in JavaScript**
 
-CSS3 mixins are borrowed from our friend [@wagerfield](https://twitter.com/mwagerfield): 
+CSS3 mixins are borrowed from [@wagerfield](https://twitter.com/mwagerfield): 
 https://github.com/wagerfield/cssmixins
 
 
@@ -20,7 +20,7 @@ Lagom is Swedish and means "Just as its suppost to be".
 
 
 
-### TODO
+## TODO
 - Write documentation
 
 
