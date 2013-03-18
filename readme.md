@@ -4,13 +4,13 @@ Collection of techniques for [Sass](http://sass-lang.com/) to build responsive w
 
 
 ## Features
-- **CSS resets** for responsive websites
+- **Normalize CSS** for different browsers/devices
 - Functions to calculate **from pixels to rems & ems** 
 - Mixins to check **if-retina** and **unless-retina**
 - Mixins to detect **if-wider-than-mobile** 
 - Mixin for retina **sprites**
 - Mixin to **trigger breakpoints in JavaScript**
-- CSS3 mixins ([from @wagerfield](https://github.com/wagerfield/cssmixins)) 
+- **CSS3 mixins** ([from @wagerfield](https://github.com/wagerfield/cssmixins)) 
 
 
 ## Usage
