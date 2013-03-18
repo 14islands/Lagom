@@ -1,6 +1,6 @@
 # Lagom
 
-Collection of tecniques for [Sass](http://sass-lang.com/) to build responsive web sites.
+Collection of techniques for [Sass](http://sass-lang.com/) to build responsive web sites.
 
 
 ## Features
@@ -10,9 +10,7 @@ Collection of tecniques for [Sass](http://sass-lang.com/) to build responsive we
 - Mixins to detect **if-wider-than-mobile** 
 - Mixin for retina **sprites**
 - Mixin to **trigger breakpoints in JavaScript**
-
-CSS3 mixins from [@wagerfield](https://twitter.com/mwagerfield): 
-https://github.com/wagerfield/cssmixins
+- CSS3 mixins ([from @wagerfield](https://github.com/wagerfield/cssmixins)) 
 
 
 ## Usage

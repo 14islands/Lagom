@@ -1,25 +1,50 @@
 
-// BREAKPOINT DEFINITIONS	
-
-/* Breakpoint mixin - wider than most mobiles*/
+/* 
+* Breakpoint wider than most mobiles
+*
+* @example
+* @include if-wider-than-mobile { color: hotpink; }	
+*
+*/
 @mixin if-wider-than-mobile {
 	@media (min-width: pxToEm(568 + 1)) {
 		@content;
 	}
 }
+
+/* 
+* Breakpoint wider than number of pixels
+*
+* @example
+* @include if-wider-than(960) { color: hotpink; }	
+*
+*/
 @mixin if-wider-than($px) {
 	@media (min-width: pxToEm($px)) {
 		@content;
 	}
 }
 
-
-// RESOLUTION RETINA WRAPPERS
+/*
+* Apply styles for non-retina
+*
+* @example
+* @include unless-retina { color: hot-pink; }
+*
+*/
 @mixin unless-retina {
 	@include if-max-resolution(1.49) {
 		@content;
 	}
 }
+
+/*
+* Apply styles for retina only
+*
+* @example
+* @include if-retina { color: hot-pink; }
+*
+*/
 @mixin if-retina {
 	@include if-min-resolution(1.5) {
 		@content;
