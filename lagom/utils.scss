@@ -31,8 +31,7 @@ $base_px: 16 !default;
 * rem value and a px fallback
 */
 @mixin pxToRem($prop, $first, $second: null, $third: null, $fourth: null) {
-	#{$prop}: setUnit($first, px) setUnit($second, px) setUnit($third, px) setUnit($fourth, px);
-	//#{$prop}: pxToRem($first) pxToRem($second) pxToRem($third) pxToRem($fourth);
+	#{$prop}: pxToRem($first) pxToRem($second) pxToRem($third) pxToRem($fourth);
 }
 
 /* 	
@@ -43,17 +42,18 @@ $base_px: 16 !default;
 *
 */
 @function pxToEm($target_px, $context_px: $base_px) {
-  @return $target_px / $context_px * 1em;
+	@if $target_px {
+	  @return setUnit( ($target_px / $context_px), em);
+	}
+  	@return null;
 }
 
 /* 	
  *	Mixin for writing out a property with an em value and a px fallback
  */
-@mixin pxToEm($prop, $first, $second: null, $third: null, $fourth: null, $context_px: null) {
-	#{$prop}: setUnit($first, px) setUnit($second, px) setUnit($third, px) setUnit($fourth, px);
+@mixin pxToEm($prop, $first, $second: null, $third: null, $fourth: null, $context_px: $base_px) {
 	#{$prop}: pxToEm($first, $context_px) pxToEm($second, $context_px) pxToEm($third, $context_px) pxToEm($fourth, $context_px);
 }
-
 
 
 /*	
@@ -104,3 +104,12 @@ $base_px: 16 !default;
 	}
 	*zoom: 1;
 }
+
+.hidden {
+	display: none;
+}
+
+.visually-hidden {
+	visibility: hidden;
+}
+
