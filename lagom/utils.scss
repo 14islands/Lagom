@@ -1,4 +1,3 @@
-
 /*
 * Base pixel for all REM/EM calcs
 */ 
@@ -18,10 +17,13 @@ $base_px: 16 !default;
 /* 	
 * Function for converting pixel values to 
 * relative rem value
+* @param $context_px optional parameter for context font-size 
+* --moz-device-pixel-ratiouses $base_px size as default 
+*
 */
-@function pxToRem($target_px: null) {
+@function pxToRem($target_px: null, $context_px: $base_px) {
 	@if $target_px {
- 	  @return setUnit( ($target_px / $base_px),  rem);
+ 	  @return setUnit( ($target_px / $context_px),  rem);
  	}
  	@return null;
 }
