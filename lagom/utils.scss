@@ -9,7 +9,7 @@ $base_px: 16 !default;
 */
 @function setUnit($value, $unit) {
 	@if $value {
-		@return #{$value}$unit;
+		@return #{$value}#{$unit};
 	}
 	@return null;
 }
@@ -23,7 +23,7 @@ $base_px: 16 !default;
 */
 @function pxToRem($target_px: null, $context_px: $base_px) {
 	@if $target_px {
- 	  @return setUnit( ($target_px / $context_px),  rem);
+ 	  @return setUnit( ($target_px / $context_px), rem);
  	}
  	@return null;
 }
